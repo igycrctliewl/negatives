@@ -7,6 +7,17 @@ body {
    background: #059C1C;
    font-family: "Arial"
 }
+
+#entryForm { 
+   text-align: center;
+}
+
+div.label {
+   text-align: left;
+   padding-top: 1em;
+   padding-bottom: .5em;
+}
+
 select { 
    width: 200px; 
    height: 2em;
@@ -22,7 +33,7 @@ input {
 }
 
 #submit { 
-   width: 200px; 
+   width: 120px; 
    height: 3em;
    font-family: "Arial";
    font-size: 1em;
@@ -33,9 +44,11 @@ input {
 
 <body>
 
+<table>
+<tr><td id="entryForm">
 <form action="action_page.html">
 
-  Stock Symbol:<br>
+<div class="label">Stock Symbol:<br></div>
   <select name="symbol">
     <option value="default">&nbsp;</option>
     <option value="T">T</option>
@@ -48,7 +61,7 @@ input {
   </select>
   <br>
 
-  Dividend Date:<br>
+<div class="label">Dividend Date:<br></div>
   <input type="date" name="effdt">
   <br>
 
@@ -59,12 +72,14 @@ input {
 -->
 
 
-  Net Dividend Paid:<br>
+<div class="label">Net Dividend Paid:<br></div>
   <input type="number" name="amount" min="0" max="999999" step="0.01">
   <br>
   <br>
+
   <input id="submit" type="submit" value="Submit">
-</form> 
+  </form> 
+</td></tr></table>
 
 <p>If you click the "Submit" button, the form-data will be sent to a page called "action_page.php".</p>
 
