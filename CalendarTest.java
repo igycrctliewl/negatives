@@ -5,7 +5,11 @@ import java.util.Date;
 public class CalendarTest {
 
    public static void main( String[] args ) {
+      SimpleDateFormat fmt = new SimpleDateFormat( "MM/dd/yyyy" );
+      System.out.println( "fmt is " + fmt.getClass() + "\n" );
+
       Calendar cal = Calendar.getInstance();            
+      System.out.println( "cal is " + cal.getClass() + "\n" );
       System.out.println( cal + "\n" );
 
       cal.clear();
@@ -17,7 +21,10 @@ public class CalendarTest {
       System.out.println( cal + "\n" );
 
       Date d = cal.getTime();
-      System.out.println( d + "\n" );
+      System.out.println( fmt.format( d ) + "\n" );
+
+   //   cal.subtract( Calendar.getInstance().get( Calendar.TIME ) );
+   //   System.out.println( cal + "\n" );
 
    }
 }
