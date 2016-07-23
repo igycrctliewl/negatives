@@ -19,7 +19,10 @@ public class FileList {
       for( File f : contents ) {
          String fileName = f.getName().substring( 0, f.getName().lastIndexOf(".") );
          String extension =  f.getName().substring( f.getName().lastIndexOf(".") );
-         System.out.println( "[" + fileName + "]..[" + extension + "]" );
+         System.out.println( "parent:" + f.getParentFile() );
+         System.out.println( "path:" + f.getAbsolutePath() );
+         System.out.println( "[" + fileName + "]..[" + extension + "]\n" );
+         System.out.println( "new file:" + f.getParentFile() + File.separator + "output" + File.separator + fileName + "Inverted" + extension + "\n" );
       }
    }
 }

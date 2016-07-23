@@ -20,7 +20,7 @@ public class Negative {
    private File sourceFile;
 
    public Negative( File file ) {
-      this.sourceFile = file;
+      this.sourceFile = new File( file.getAbsolutePath() );
    }
 
    
@@ -44,6 +44,7 @@ public class Negative {
          System.out.println( e );
       }
      
+
       //get image width and height
       int width = img.getWidth();
       int height = img.getHeight();
@@ -70,7 +71,15 @@ public class Negative {
       //write image
       String fileName = this.sourceFile.getName().substring( 0, this.sourceFile.getName().lastIndexOf(".") );
       String extension =  this.sourceFile.getName().substring( this.sourceFile.getName().lastIndexOf(".") );
-      File out = new File( fileName + "Output" + extension );
+      String outputFile = this.sourceFile.getParentFile() + File.separator + "output" + File.separator;
+
+      // Create File object to make directories
+      File out = new File( outputFile );
+      out.mkdirs();
+
+      // Recreate File object with fully qualified file name and write output
+      outputFile = outputFile + fileName + "Inverted" + extension;
+      out = new File( outputFile );
       try {
          ImageIO.write( img, "jpg", out );
       } catch( IOException e ) {
