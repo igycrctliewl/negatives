@@ -20,6 +20,7 @@ public class FileList {
       System.out.println("*************  list contents  ***************\n" );
       File[] contents = home.listFiles();
       for( File f : contents ) {
+         System.out.println( f );
          String fileName = f.getName().substring( 0, f.getName().lastIndexOf(".") );
          String extension =  f.getName().substring( f.getName().lastIndexOf(".") );
          System.out.println( "parent:" + f.getParentFile() );
