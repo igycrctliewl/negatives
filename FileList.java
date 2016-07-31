@@ -53,7 +53,6 @@ public class FileList {
                   e.printStackTrace();
                }
             }
-
          }
       }
    }
@@ -69,14 +68,6 @@ public class FileList {
          return null;
       } 
    }
-
-
-//   //
-//   
-//
-
-
-
 
 }
 
