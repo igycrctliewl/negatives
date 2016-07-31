@@ -1,6 +1,8 @@
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class FileList {
    
@@ -35,6 +37,7 @@ public class FileList {
                   String fileName = f.getName().substring( 0, f.getName().lastIndexOf(".") );
                   String extension =  f.getName().substring( f.getName().lastIndexOf(".") );
                   String outputFile = f.getParentFile() + File.separator + "output" + File.separator;
+                  System.out.println( "outputFile:" + outputFile );
 //      // Create File object to make directories
 //      File out = new File( "C:\\image\\output" );
 //      out.mkdirs();
@@ -63,7 +66,7 @@ public class FileList {
       try {
          img = new MBBufferedImage( ImageIO.read( file ));
          return img.getNegativeImg();
-      } catch( IOException e ) {
+      } catch( Exception e ) {
          System.out.println( e );
          return null;
       } 
