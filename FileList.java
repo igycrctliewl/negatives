@@ -31,24 +31,22 @@ public class FileList {
             System.out.println( "path:" + f.getAbsolutePath() );
             BufferedImage bi = convert( f );
             if( bi == null ) {
-               System.out.println( "convert method returned null" );
+               System.out.println( "*** Conversion unsuccessful.  " + f + " might not be an image file.\n"  );
             } else {
                try {
                   String fileName = f.getName().substring( 0, f.getName().lastIndexOf(".") );
                   String extension =  f.getName().substring( f.getName().lastIndexOf(".") );
                   String outputFile = f.getParentFile() + File.separator + "output" + File.separator;
-                  System.out.println( "outputFile:" + outputFile );
-//      // Create File object to make directories
-//      File out = new File( "C:\\image\\output" );
-//      out.mkdirs();
-//      // Recreate File object with fully qualified file name and write output
-//   //   outputFile = outputFile + fileName + "Inverted" + extension;
-//      out = new File( "C:\\image\\output\\outFile.jpg" );
-//      try {
-//         ImageIO.write( newImage, "jpg", out );
-//      } catch( IOException e ) {
-//         System.out.println( e );
-//      }
+                  //System.out.println( "outputFile:" + outputFile );
+                  // Create File object to make directories
+                  File out = new File( outputFile );
+                  out.mkdirs();
+
+                  // Recreate File object with fully qualified file name and write output
+                  outputFile = outputFile + fileName + "Inverted" + extension;
+                  //System.out.println( "final write outputFile:" + outputFile );
+                  out = new File( outputFile );
+                  ImageIO.write( bi, "jpg", out );
 
                } catch( Exception e ) {
                   System.out.println( "Error while trying to write output for " + f );
