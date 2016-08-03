@@ -26,6 +26,10 @@ public class MBBufferedImage {
       int width = copy.getWidth();
       int height = copy.getHeight();
 
+      // capture image data as array to get ready for ForkJoin process
+      int[] src = copy.getRGB(0, 0, width, height, null, 0, width);
+      System.out.println("Array size is " + src.length);
+
       //convert to negative
       for( int y = 0; y < height; y++ ) {
          for( int x = 0; x < width; x++ ) {
