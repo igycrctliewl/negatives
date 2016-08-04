@@ -8,6 +8,7 @@
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
+import java.util.concurrent.RecursiveAction;
 
 public class MBBufferedImage {
 
@@ -29,6 +30,10 @@ public class MBBufferedImage {
       // capture image data as array to get ready for ForkJoin process
       int[] src = copy.getRGB(0, 0, width, height, null, 0, width);
       System.out.println("Array size is " + src.length);
+      int[] dest = new int[ src.length ];
+
+      ForkNegative fn = new ForkNegative( src, (int) 0, src.length, dest );
+      System.out.println( fn.toString() );
 
       //convert to negative
       for( int y = 0; y < height; y++ ) {
@@ -61,6 +66,29 @@ public class MBBufferedImage {
       WritableRaster raster = this.img.copyData( this.img.getRaster().createCompatibleWritableRaster() );
       return new BufferedImage( cm, raster, isAlphaPremultiplied, null );
    }
+
+   private class ForkNegative extends RecursiveAction {
+
+      private int[] mSource;
+      private int mStart;
+      private int mLength;
+      private int[] mDestination;
+     
+      public ForkNegative(int[] src, int start, int length, int[] dst) {
+         this.mSource = src;
+         this.mStart = start;
+         this.mLength = length;
+         this.mDestination = dst;
+      }
+
+      protected void compute() {
+      }
+
+      public String toString() {
+         return "ForkNegative[" + mLength + "]";
+      }
+   }
+
 }
 
 
