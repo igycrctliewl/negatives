@@ -27,7 +27,7 @@ public class MBBufferedImage {
 
       // capture image data as array to get ready for ForkJoin process
       int[] src = this.img.getRGB(0, 0, width, height, null, 0, width);
-      System.out.println("   Array size is " + src.length);
+      // System.out.println("Array size is " + src.length);
       int[] dest = new int[ src.length ];
 
       ForkNegative fn = new ForkNegative( src, 0, src.length, dest );
@@ -76,7 +76,7 @@ public class MBBufferedImage {
       private int mStart;
       private int mLength;
       private int[] mDestination;
-      protected final int sThreshold = 50000;
+      protected final int sThreshold = 40000;
 
       public ForkNegative(int[] src, int start, int length, int[] dst) {
          this.mSource = src;
