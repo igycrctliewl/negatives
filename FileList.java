@@ -8,6 +8,9 @@ public class FileList {
    
    public static void main( String[] args ) {
       System.out.println( "\n-------------------- Begin --------------------\n" );
+
+      long startTime = System.currentTimeMillis();
+
       String filename = null;
 
       if( args.length != 1 ) {
@@ -56,6 +59,8 @@ public class FileList {
 
          }
       }
+      long endTime = System.currentTimeMillis();
+      System.out.println("Directory converted in " + (endTime - startTime) + " milliseconds.");
    }
 
    private static BufferedImage convert( File file ) {
@@ -71,23 +76,5 @@ public class FileList {
    }
 
 
-//   //
-//   
-//
-
-
-
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
