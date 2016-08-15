@@ -1,3 +1,5 @@
+package mikebro.commandui;
+
 /**
  * File: Negative.java
  * Adapted from an online example as described below
@@ -15,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import javax.imageio.ImageIO;
+import mikebro.image.services.MBBufferedImage;
 
 public class Negative {
 

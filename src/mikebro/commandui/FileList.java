@@ -1,8 +1,11 @@
+package mikebro.commandui;
+
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import mikebro.image.services.MBBufferedImage;
 
 public class FileList {
 
@@ -11,7 +14,7 @@ public class FileList {
 
       long startTime = System.currentTimeMillis();
 
-      String filename = null;
+      String filename;
 
       if( args.length != 1 ) {
       // default to current directory
@@ -51,7 +54,7 @@ public class FileList {
                   out = new File( outputFile );
                   ImageIO.write( bi, "jpg", out );
 
-               } catch( Exception e ) {
+               } catch( IOException e ) {
                   System.out.println( "Error while trying to write output for " + f );
                   e.printStackTrace();
                }
@@ -64,7 +67,7 @@ public class FileList {
 
    private static BufferedImage convert( File file ) {
       //read image
-      MBBufferedImage img = null;
+      MBBufferedImage img;
       try {
          img = new MBBufferedImage( ImageIO.read( file ));
          return img.getNegativeImg();

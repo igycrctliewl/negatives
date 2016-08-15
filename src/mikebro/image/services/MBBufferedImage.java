@@ -1,3 +1,5 @@
+package mikebro.image.services;
+
 /**
  * Adapted from an online example Negative.java as described below
  *
