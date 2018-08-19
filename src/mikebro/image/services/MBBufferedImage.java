@@ -8,6 +8,7 @@ package mikebro.image.services;
  * www.github.com/yusufshakeel/Java-Image-Processing-Project
  */
 import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.util.concurrent.ForkJoinPool;
@@ -20,6 +21,10 @@ public class MBBufferedImage {
    public MBBufferedImage( BufferedImage img ) {
       this.img = img;
    }
+
+	public Image getImage() {
+		return this.img;
+	}
 
    public BufferedImage getNegativeImg() {
 
