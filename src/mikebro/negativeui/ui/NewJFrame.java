@@ -4,6 +4,7 @@
  */
 package mikebro.negativeui.ui;
 
+import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ public class NewJFrame extends javax.swing.JFrame {
 	//private String imgFile = "C:\\Users\\mikebro\\Desktop\\200808261257_001.jpg";
 	private String imgFile = getClass().getResource( "/mikebro/resources/java.jpg" ).getFile();
 	private MBBufferedImage currentImage;
+	private Image negativeImage;
 
    /**
     * Creates new form NewJFrame
@@ -42,6 +44,7 @@ public class NewJFrame extends javax.swing.JFrame {
       jFileChooser = new javax.swing.JFileChooser();
       jlLeft = new JLabel( new ImageIcon( imgFile ) );
       jlRight = new JLabel( new ImageIcon( ImageUtils.scaleImage( (new ImageIcon( imgFile )).getImage(), 80, 60 ) ));
+      jlRight.setVisible( false );
       jMenuBar = new javax.swing.JMenuBar();
       jMenu1 = new javax.swing.JMenu();
       jmiOpen = new javax.swing.JMenuItem();
@@ -58,7 +61,6 @@ public class NewJFrame extends javax.swing.JFrame {
       jlLeft.setText("Original");
       jlLeft.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-      jlRight.setText("Negative");
       jlRight.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
       jMenu1.setText("File");
@@ -103,18 +105,20 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGap(85, 85, 85)
             .addComponent(jlLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(46, 46, 46)
-            .addComponent(jlRight, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(47, Short.MAX_VALUE))
+            .addComponent(jlRight, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(151, Short.MAX_VALUE))
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
             .addGap(66, 66, 66)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-               .addComponent(jlRight, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-               .addComponent(jlLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(jlRight, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+               .addComponent(jlLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(126, Short.MAX_VALUE))
       );
+
+      jlLeft.setVisible( false );
 
       java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
       setBounds((screenSize.width-416)/2, (screenSize.height-338)/2, 416, 338);
@@ -128,6 +132,9 @@ public class NewJFrame extends javax.swing.JFrame {
 		if( dialogRc == JFileChooser.APPROVE_OPTION ) {
 			try {
 				currentImage = new MBBufferedImage( ImageIO.read( jFileChooser.getSelectedFile() ));
+				negativeImage = currentImage.getNegativeImg();
+				jlLeft.setVisible( true );
+				jlRight.setVisible( true );
 				reDrawImages();
 			} catch( IOException ex ) {
 				Logger.getLogger( NewJFrame.class.getName() ).log( Level.SEVERE, null, ex );
@@ -173,7 +180,7 @@ public class NewJFrame extends javax.swing.JFrame {
 		int adjustedHeight = this.getAdjustedHeight();
 		if( currentImage != null ) {
 			jlLeft.setIcon( new ImageIcon( ImageUtils.scaleImage( currentImage.getImage(), ( adjustedWidth / 2 ), adjustedHeight ) ));
-			jlRight.setIcon( new ImageIcon( ImageUtils.scaleImage( currentImage.getNegativeImg(), ( adjustedWidth / 2 ), adjustedHeight ) ));
+			jlRight.setIcon( new ImageIcon( ImageUtils.scaleImage( negativeImage, ( adjustedWidth / 2 ), adjustedHeight ) ));
 		}
    }//GEN-LAST:event_formComponentResized
 

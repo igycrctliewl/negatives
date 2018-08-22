@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JFileChooser" name="jFileChooser">
     </Component>
@@ -111,6 +111,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jlLeft.setVisible( false );"/>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JLabel( new ImageIcon( imgFile ) );"/>
       </AuxValues>
     </Component>
@@ -124,6 +125,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JLabel( new ImageIcon( ImageUtils.scaleImage( (new ImageIcon( imgFile )).getImage(), 80, 60 ) ));"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="jlRight.setVisible( false );"/>
       </AuxValues>
     </Component>
   </SubComponents>
