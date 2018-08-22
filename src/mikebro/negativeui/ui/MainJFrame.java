@@ -15,7 +15,7 @@ import mikebro.image.utils.ImageUtils;
  *
  * @author mikebro
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class MainJFrame extends javax.swing.JFrame {
 
 	// component variables declaration
    private javax.swing.JFileChooser jFileChooser;
@@ -33,9 +33,9 @@ public class NewJFrame extends javax.swing.JFrame {
 	private Image negativeImage;
 
    /**
-    * Creates new form NewJFrame
+    * Creates new form MainJFrame
     */
-   public NewJFrame() {
+   public MainJFrame() {
       initComponents();
    }
 
@@ -148,7 +148,7 @@ public class NewJFrame extends javax.swing.JFrame {
 				jlRight.setVisible( true );
 				reDrawImages();
 			} catch( IOException ex ) {
-				Logger.getLogger( NewJFrame.class.getName() ).log( Level.SEVERE, null, ex );
+				Logger.getLogger( MainJFrame.class.getName() ).log( Level.SEVERE, null, ex );
 				ex.printStackTrace();
 			}
 		}
@@ -218,13 +218,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
          }
       } catch (ClassNotFoundException ex) {
-         java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+         java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
       } catch (InstantiationException ex) {
-         java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+         java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
       } catch (IllegalAccessException ex) {
-         java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+         java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
       } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-         java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+         java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
       }
 
 
@@ -232,7 +232,7 @@ public class NewJFrame extends javax.swing.JFrame {
       java.awt.EventQueue.invokeLater(new Runnable() {
 			@Override
          public void run() {
-            new NewJFrame().setVisible(true);
+            new MainJFrame().setVisible(true);
          }
       });
    }
