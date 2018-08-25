@@ -54,6 +54,8 @@ public class MainJFrame extends javax.swing.JFrame {
       jmiOpen = new javax.swing.JMenuItem();
       jmiSaveLeft = new javax.swing.JMenuItem();
       jmiSaveRight = new javax.swing.JMenuItem();
+		
+		this.setLayout( null );
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       addComponentListener(new java.awt.event.ComponentAdapter() {
